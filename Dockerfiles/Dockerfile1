@@ -1,0 +1,9 @@
+FROM alpine
+RUN apk add git wget 
+WORKDIR /opt/app
+COPY test.sh test.sh
+RUN chmod +x test.sh
+ENV PATH="$PATH:/opt/app"
+RUN adduser sravani -h /opt/app -D -s /bin/bash
+USER sravani
+CMD ["test.sh"]
